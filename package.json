@@ -1,0 +1,23 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Yofri/todo-api.git",
+  "author": "Yofriadi Yahya <yofriadiyahya@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon app --exec babel-node --presets env"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.13.3"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.13.7",
+    "validator": "^9.2.0"
+  }
+}
