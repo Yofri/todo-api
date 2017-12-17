@@ -1,5 +1,9 @@
 import mongoose from 'mongoose'
 module.exports = mongoose.model('Todo', {
+  creator: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User'
+  },
   title: {
     type: String,
     required: true,
