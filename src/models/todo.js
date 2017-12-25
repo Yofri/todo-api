@@ -1,27 +1,24 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
+
 module.exports = mongoose.model('Todo', {
-  creator: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'User'
+  uid: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
   },
   title: {
     type: String,
     required: true,
-    minlength: [1, 'Too short'],
+    minlength: 1,
     trim: true
   },
   task: {
     type: String,
     required: true,
-    minlength: [1, 'Too short'],
+    minlength: 1,
     trim: true
   },
   completed: {
     type: Boolean,
     default: false
-  },
-  completedAt: {
-    type: Number,
-    default: null
   }
 })
