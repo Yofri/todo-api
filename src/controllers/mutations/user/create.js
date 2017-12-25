@@ -7,7 +7,7 @@ module.exports = {
   args: {
     body: {type: new GraphQLNonNull(UserInputType)}
   },
-  resolve: (root, args) => {
+  resolve(root, args) {
     return User.create(args.body)
       .then(res => res)
       .catch(err => err)

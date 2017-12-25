@@ -4,11 +4,9 @@ const {UserType} = require('../../types')
 
 module.exports = {
   type: new GraphQLList(UserType),
-  resolve: () => {
-    return new Promise((resolve, reject) => {
-      User.find((err, users) => {
-        err ? reject(err) : resolve(users)
-      })
-    })
+  resolve() {
+    return User.find()
+      .then(res => res)
+      .catch(err => err)
   }
 }

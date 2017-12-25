@@ -1,5 +1,7 @@
-const listsUser = require('./lists')
+const allUser = require('./lists')
+const findUser = require('./find')
 
 module.exports = {
-  listsUser
+  allUser,
+  findUser
 }
