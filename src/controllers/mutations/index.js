@@ -1,3 +1,7 @@
-const mutateUser = require('./user')
+const {createUser, updateUser, removeUser} = require('./user')
+const {createTodo, updateTodo, removeTodo} = require('./todo')
 
-module.exports = mutateUser
+module.exports = {
+  createUser, updateUser, removeUser,
+  createTodo, updateTodo, removeTodo
+}

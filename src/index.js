@@ -28,5 +28,5 @@ app.use('/todo', morgan('dev'), graphqlHTTP({
 }))
 
 db.on('error', () => console.log('Failed to connect to database'))
-db.once('open', () => console.log('Connected to mongoose'))
+db.once('open', () => console.log('Connected to database'))
 app.listen(port, () => console.log(`Express listening on port ${port}`))

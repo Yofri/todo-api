@@ -1,3 +1,9 @@
-const queryUser = require('./user')
+const {allUser, findUser} = require('./user')
+const {allTodo, findTodo} = require('./todo')
 
-module.exports = queryUser
+module.exports = {
+  allUser,
+  findUser,
+  allTodo,
+  findTodo
+}
