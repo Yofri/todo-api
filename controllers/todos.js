@@ -9,7 +9,7 @@ const create = async (req, res) => {
   }
 }
 
-const lists = async (req, res, next) => {
+const lists = async (req, res) => {
   try {
     const todos = await Todo.find()
     res.status(200).send(todos)

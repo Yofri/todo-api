@@ -1,6 +1,6 @@
 import express from 'express'
-import signin from '../controllers/signin'
+import login from '../controllers/login'
 
 const router = express.Router()
 module.exports = router
-  .post('/', signin)
+  .post('/', login)

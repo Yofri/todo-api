@@ -17,15 +17,5 @@ module.exports = mongoose.model('User', {
     type: String,
     required: true,
     minlength: 8
-  },
-  token: [{
-    access: {
-      type: String,
-      required: true
-    },
-    token: {
-      type: String,
-      required: true
-    }
-  }]
+  }
 })
