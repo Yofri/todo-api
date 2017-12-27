@@ -1,15 +1,20 @@
-const {GraphQLNonNull} = require('graphql')
+const bcrypt = require('bcryptjs')
+const {
+  GraphQLNonNull,
+  GraphQLString
+} = require('graphql')
 const {User} = require('../../../models')
-const {UserType, UserInputType} = require('../../types')
+const {UserType} = require('../../types')
 
 module.exports = {
-  type: UserType,
+  type: new GraphQLNonNull(UserType),
   args: {
-    body: {type: new GraphQLNonNull(UserInputType)}
+    name: {type: new GraphQLNonNull(GraphQLString)},
+    email: {type: new GraphQLNonNull(GraphQLString)},
+    password: {type: new GraphQLNonNull(GraphQLString)}
   },
-  resolve(root, args) {
-    return User.create(args.body)
-      .then(res => res)
-      .catch(err => err)
+  resolve: async (root, args) => {
+    args.password = await bcrypt.hash(args.password, 8)
+    return User.create(args)
   }
 }

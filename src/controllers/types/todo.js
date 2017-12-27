@@ -1,35 +1,27 @@
 const {
   GraphQLObjectType,
-  GraphQLInputObjectType,
   GraphQLNonNull,
   GraphQLID,
   GraphQLString,
-  GraphQLList,
-  GraphQLBoolean
+  GraphQLBoolean,
+  GraphQLList
 } = require('graphql')
+const UserType = require('./user')
+const {User} = require('../../models')
 
-const TodoType = new GraphQLObjectType({
+module.exports = new GraphQLObjectType({
   name: 'Todo',
   fields: {
-    _id: {type: new GraphQLNonNull(GraphQLID)},
-    uid: {type: new GraphQLNonNull(GraphQLID)},
-    title: {type: new GraphQLNonNull(GraphQLString)},
-    task: {type: new GraphQLNonNull(GraphQLList(GraphQLString))},
-    completed: {type: new GraphQLNonNull(GraphQLBoolean)}
-  }
-})
-
-const TodoInputType = new GraphQLInputObjectType({
-  name: 'TodoInput',
-  fields: {
+    _id: {type: GraphQLID},
     uid: {type: GraphQLID},
     title: {type: GraphQLString},
     task: {type: GraphQLList(GraphQLString)},
-    completed: {type: GraphQLBoolean}
+    completed: {type: GraphQLBoolean}/* ,
+    owner: {
+      type: new GraphQLNonNull(UserType),
+      resolve: async ({uid}) => {
+        return await User.find({_id: uid})
+      }
+    } */
   }
 })
-
-module.exports = {
-  TodoType,
-  TodoInputType
-}

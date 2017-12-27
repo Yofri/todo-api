@@ -6,7 +6,7 @@ const {User} = require('../../../models')
 const {UserType, UserInputType} = require('../../types')
 
 module.exports = {
-  type: UserType,
+  type: new GraphQLNonNull(UserType),
   args: {
     id: {type: new GraphQLNonNull(GraphQLID)}
   },

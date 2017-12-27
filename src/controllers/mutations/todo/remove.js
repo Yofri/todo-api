@@ -3,10 +3,10 @@ const {
   GraphQLID
 } = require('graphql')
 const {Todo} = require('../../../models')
-const {TodoType, TodoInputType} = require('../../types')
+const {TodoType} = require('../../types')
 
 module.exports = {
-  type: TodoType,
+  type: new GraphQLNonNull(TodoType),
   args: {
     id: {type: new GraphQLNonNull(GraphQLID)}
   },

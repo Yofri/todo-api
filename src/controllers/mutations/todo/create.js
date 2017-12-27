@@ -1,17 +1,22 @@
 const {
   GraphQLNonNull,
   GraphQLList,
+  GraphQLID,
   GraphQLString
 } = require('graphql')
-const {Todo} = require('../../../models')
-const {TodoType, TodoInputType} = require('../../types')
+const {Todo, User} = require('../../../models')
+const {TodoType} = require('../../types')
 
 module.exports = {
-  type: TodoType,
+  type: new GraphQLNonNull(TodoType),
   args: {
-    body: {type: new GraphQLNonNull(TodoInputType)}
+    uid: {type: new GraphQLNonNull(GraphQLID)},
+    title: {type: new GraphQLNonNull(GraphQLString)},
+    task: {type: new GraphQLNonNull(GraphQLList(GraphQLString))}
   },
-  resolve: async (root, {body}) => {
-    return await Todo.create(body)
+  resolve: async (root, args) => {
+    const user = await User.find({_id: args.uid})
+    if (!user.length) throw new Error('User not found')
+    return await Todo.create(args)
   }
 }

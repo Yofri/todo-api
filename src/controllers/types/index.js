@@ -1,9 +1,7 @@
-const {UserType, UserInputType} = require('./user')
-const {TodoType, TodoInputType} = require('./todo')
+const UserType = require('./user')
+const TodoType = require('./todo')
 
 module.exports = {
   UserType,
-  UserInputType,
-  TodoType,
-  TodoInputType
+  TodoType
 }

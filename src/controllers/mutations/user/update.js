@@ -1,18 +1,21 @@
 const {
   GraphQLNonNull,
-  GraphQLID
+  GraphQLID,
+  GraphQLString
 } = require('graphql')
 const {User} = require('../../../models')
 const {UserType, UserInputType} = require('../../types')
 
 module.exports = {
-  type: UserType,
+  type: new GraphQLNonNull(UserType),
   args: {
     id: {type: new GraphQLNonNull(GraphQLID)},
-    body: {type: UserInputType}
+    name: {type: GraphQLString},
+    email: {type: GraphQLString},
+    password: {type: GraphQLString}
   },
-  resolve(root, {id, body}) {
-    return User.findByIdAndUpdate(id, body)
+  resolve(root, args) {
+    return User.findByIdAndUpdate(args.id, args)
       .then(res => res)
       .catch(err => err)
   }
