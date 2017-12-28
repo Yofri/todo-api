@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
-module.exports = mongoose.model('Todo', {
+
+export default mongoose.model('Todo', {
   uid: {
     type: mongoose.Schema.ObjectId,
-    ref: 'User'/* ,
-    required: true */
+    ref: 'User',
+    required: true
   },
   title: {
     type: String,

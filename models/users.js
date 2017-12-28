@@ -1,7 +1,12 @@
 import mongoose from 'mongoose'
 import isEmail from 'validator/lib/isEmail'
 
-module.exports = mongoose.model('User', {
+export default mongoose.model('User', {
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
   email: {
     type: String,
     required: true,
@@ -17,5 +22,9 @@ module.exports = mongoose.model('User', {
     type: String,
     required: true,
     minlength: 8
+  },
+  role: {
+    type: String,
+    default: 'user'
   }
 })

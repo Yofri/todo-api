@@ -5,8 +5,6 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import morgan from 'morgan'
 
-import signup from './routes/signup'
-import login from './routes/login'
 import users from './routes/users'
 import todos from './routes/todos'
 
@@ -23,8 +21,6 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(morgan('dev'))
 
-app.use('/api/signup', signup)
-app.use('/login', login)
 app.use('/users', users)
 app.use('/todos', todos)
 

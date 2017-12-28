@@ -11,7 +11,7 @@ const create = async (req, res) => {
 
 const lists = async (req, res) => {
   try {
-    const todos = await Todo.find()
+    const todos = await Todo.find({uid: req.user.id})
     res.status(200).send(todos)
   } catch (err) {
     res.status(500).send(err)
@@ -36,4 +36,4 @@ const remove = async (req, res) => {
   }
 }
 
-module.exports = {create, lists, update, remove}
+export {create, lists, update, remove}
