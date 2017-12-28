@@ -1,6 +1,6 @@
 import express from 'express'
 import {create, lists, update, remove} from '../controllers/todos'
-import {authenticated, authorized} from '../middlewares/middlewares'
+import authenticated from '../middlewares/middlewares'
 
 const router = express.Router()
 module.exports = router
