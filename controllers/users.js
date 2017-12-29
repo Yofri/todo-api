@@ -14,7 +14,7 @@ const create = async (req, res) => {
 
 const lists = async (req, res) => {
   try {
-    if (req.user.role === 'user') {
+    if (req.user.role === 'admin') {
       const users = await User.find()
       res.status(200).send(users)
     } else {
