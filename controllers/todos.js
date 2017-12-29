@@ -2,6 +2,7 @@ import Todo from '../models/todos'
 
 const create = async (req, res) => {
   try {
+    req.body.uid = req.user.id
     const todo = await Todo.create(req.body)
     res.status(200).send(todo)
   } catch (err) {

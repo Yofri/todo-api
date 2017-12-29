@@ -21,8 +21,8 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(morgan('dev'))
 
-app.use('/users', users)
-app.use('/todos', todos)
+app.use('/todo/users', users)
+app.use('/todo/todos', todos)
 
 db.on('error', () => console.log('Error connecting to database'))
 db.once('open', () => console.log('Connected to database'))
