@@ -8,13 +8,14 @@ import morgan from 'morgan'
 import users from './routes/users'
 import todos from './routes/todos'
 
-mongoose.connect('mongodb://localhost/todo', {useMongoClient: true})
-mongoose.Promise = global.Promise
 dotenv.config()
-
 const app = express()
 const db = mongoose.connection
+const uri = `mongodb://root:${process.env.DB_KEY}@todo-shard-00-00-vioh2.mongodb.net:27017,todo-shard-00-01-vioh2.mongodb.net:27017,todo-shard-00-02-vioh2.mongodb.net:27017/test?ssl=true&replicaSet=Todo-shard-0&authSource=admin`
 const port = process.env.PORT || 3000
+
+mongoose.connect(uri, {useMongoClient: true})
+mongoose.Promise = global.Promise
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
