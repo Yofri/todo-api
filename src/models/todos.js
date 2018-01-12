@@ -1,9 +1,9 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
-export default mongoose.model('Todo', {
+module.exports = mongoose.model('todos', {
   uid: {
     type: mongoose.Schema.ObjectId,
-    ref: 'User',
+    ref: 'users',
     required: true
   },
   title: {
@@ -16,10 +16,5 @@ export default mongoose.model('Todo', {
     type: String,
     required: true,
     minlength: [1, 'Too short'],
-    trim: true
-  }],
-  completed: {
-    type: Boolean,
-    default: false
-  }
+  }]
 })
