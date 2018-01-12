@@ -34,44 +34,4 @@ const login = async (req, res) => {
   }
 }
 
-const allUsers = async (req, res) => {
-  try {
-    const users = await User.find()
-    res.status(200).send(users)
-  } catch (err) {
-    res.status(400).send(err)
-  }
-}
-
-const updateUser = async (req, res) => {
-  try {
-    const user = await User.findOne({_id: req.params.id})
-    if (req.user.id === user._id.toString()) {
-      if (req.body.password) {
-        req.body.password = await bcrypt.hash(req.body.password, 8)
-      }
-      const user = await User.findByIdAndUpdate(req.params.id, req.body)
-      res.status(200).send(user)
-    } else {
-      res.status(401).send({msg: 'Unauthorized'})
-    }
-  } catch (err) {
-    res.status(400).send(err)
-  }
-}
-
-const removeUser = async (req, res) => {
-  try {
-    const user = await User.findOne({_id: req.params.id})
-    if (req.user.id === user._id.toString()) {
-      const user = await User.findByIdAndRemove(req.params.id)
-      res.status(200).send(user)
-    } else {
-      res.status(401).send({msg: 'Unauthorized'})
-    }
-  } catch (err) {
-    res.status(400).send(err)
-  }
-}
-
-module.exports = {createUser, login, allUsers, updateUser, removeUser}
+module.exports = {createUser, login}

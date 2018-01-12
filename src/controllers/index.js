@@ -1,7 +1,7 @@
-const {createUser, login, allUsers, updateUser, removeUser} = require('./users')
+const {createUser, login} = require('./users')
 const {createTodo, allTodos, updateTodo, removeTodo} = require('./todos')
 
 module.exports = {
-  createUser, login, allUsers, updateUser, removeUser,
+  createUser, login,
   createTodo, allTodos, updateTodo, removeTodo
 }
