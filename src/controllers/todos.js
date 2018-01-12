@@ -19,21 +19,6 @@ const allTodos = async (req, res) => {
   }
 }
 
-const updateTodo = async (req, res) => {
-  try {
-    const todo = await Todo.findOne({_id: req.params.id})
-    if (req.user.id === todo.uid.toString()) {
-      await Todo.findByIdAndUpdate(req.params.id, req.body)
-      const todo = await Todo.findById(req.params.id)
-      res.status(200).send(todo)
-    } else {
-      res.status(401).send({msg: 'Unauthorized'})
-    }
-  } catch (err) {
-    res.status(400).send(err)
-  }
-}
-
 const removeTodo = async (req, res) => {
   try {
     const todo = await Todo.findOne({_id: req.params.id})
@@ -48,4 +33,4 @@ const removeTodo = async (req, res) => {
   }
 }
 
-module.exports = {createTodo, allTodos, updateTodo, removeTodo}
+module.exports = {createTodo, allTodos, removeTodo}
