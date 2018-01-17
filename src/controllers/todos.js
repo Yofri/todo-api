@@ -15,7 +15,7 @@ const allTodos = async (req, res) => {
     const todos = await Todo.find({uid: req.user.id})
     res.status(200).send(todos)
   } catch (err) {
-    res.status(500).send(err)
+    res.status(400).send(err)
   }
 }
 
@@ -29,7 +29,7 @@ const removeTodo = async (req, res) => {
       res.status(401).send({msg: 'Unauthorized'})
     }
   } catch (err) {
-    res.status(500).send(err)
+    res.status(400).send(err)
   }
 }
 
